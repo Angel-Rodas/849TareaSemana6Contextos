@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAuth, type Role } from '../context/AuthContext';
 
-export default function LoginScreen({ navigation }: NativeStackScreenProps<any>) {
+export default function LoginScreen() {
   const { signIn } = useAuth();
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
 
   const handleIngresar = () => {
     if (!selectedRole) return;
     signIn(selectedRole);
-    navigation.navigate('Main');
   };
 
   return (
